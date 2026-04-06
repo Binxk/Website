@@ -327,7 +327,8 @@ function switchTab(tab) {
     setTimeout(function() { page.classList.add('visible'); }, 30);
   }
   current = tab;
-  document.querySelector('.acknowledgement').style.display = tab === 'me' ? '' : 'none';
+  var ack = document.querySelector('.acknowledgement');
+  if (ack) ack.style.display = tab === 'me' ? '' : 'none';
 }
 
 // Auto-open on "Me" tab on load
