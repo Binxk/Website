@@ -99,7 +99,7 @@ a { color: inherit; text-decoration: none; }
 .me-bio { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 520px; margin-bottom: 40px; padding-left: 24px; }
 .contact-row { display: flex; align-items: center; gap: 12px; padding-top: 24px; }
 .contact-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--subtle); }
-.contact-email { font-size: 13px; font-weight: 700; color: var(--fg); position: relative; }
+.contact-email { font-size: 13px; font-weight: 700; color: var(--fg); position: relative; background: var(--bg); isolation: isolate; }
 .contact-email::before {
   content: '';
   position: absolute;
@@ -108,12 +108,13 @@ a { color: inherit; text-decoration: none; }
   width: 220px;
   height: 124px;
   background: url('chichi.png') center/contain no-repeat;
-  transform: translateX(-50%) translateY(100%);
+  transform: translateX(-50%) translateY(50%);
+  opacity: 0;
   pointer-events: none;
-  transition: transform 0.3s cubic-bezier(0.25, 0, 0.25, 1);
-  z-index: 50;
+  transition: transform 0.35s cubic-bezier(0.25, 0, 0.25, 1), opacity 0.2s;
+  z-index: -1;
 }
-.contact-email:hover::before { transform: translateX(-50%) translateY(0); }
+.contact-email:hover::before { transform: translateX(-50%) translateY(0); opacity: 1; }
 
 .research-header { padding-left: 15%; margin-bottom: 48px; }
 .research-title { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 400; letter-spacing: -0.04em; line-height: 1; white-space: nowrap; }
@@ -122,8 +123,9 @@ a { color: inherit; text-decoration: none; }
 .index-header { display: grid; grid-template-columns: 80px 1fr 140px; padding: 10px 0; }
 .index-header span { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--subtle); }
 .index-header span:last-child { text-align: right; }
-.index-row { display: grid; grid-template-columns: 80px 1fr 140px; padding: 14px 0; position: relative; }
-.index-row::before {
+.index-row { display: grid; grid-template-columns: 80px 1fr 140px; padding: 14px 0; }
+.index-row:has(a) { position: relative; background: var(--bg); isolation: isolate; }
+.index-row:has(a)::before {
   content: '';
   position: absolute;
   bottom: 0;
@@ -131,12 +133,13 @@ a { color: inherit; text-decoration: none; }
   width: 220px;
   height: 124px;
   background: url('chichi.png') center/contain no-repeat;
-  transform: translateY(100%);
+  transform: translateY(50%);
+  opacity: 0;
   pointer-events: none;
-  transition: transform 0.3s cubic-bezier(0.25, 0, 0.25, 1);
-  z-index: 50;
+  transition: transform 0.35s cubic-bezier(0.25, 0, 0.25, 1), opacity 0.2s;
+  z-index: -1;
 }
-.index-row:hover::before { transform: translateY(0); }
+.index-row:has(a):hover::before { transform: translateY(0); opacity: 1; }
 .index-row:has(a):hover .index-row-title { font-style: italic; }
 .index-row-year { font-size: 11px; color: var(--subtle); padding-top: 2px; }
 .index-row-title { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; transition: font-style 0.2s; }
