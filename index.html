@@ -223,7 +223,7 @@ a { color: inherit; text-decoration: none; }
   <div class="page" id="page-research">
     <div class="research-header fade-in">
       <h2 class="research-title">Research</h2>
-      <p class="research-desc">self-worth index: 7</p>
+      <p class="research-desc" id="self-worth-index">self-worth index: </p>
     </div>
     <div class="research-index fade-in">
       <div class="index-header">
@@ -329,6 +329,10 @@ function switchTab(tab) {
 
 // Auto-open on "Me" tab on load
 switchTab('me');
+
+// Self-worth index: count research rows automatically
+document.getElementById('self-worth-index').textContent =
+  'self-worth index: ' + document.querySelectorAll('#page-research .index-row').length;
 </script>
 <p class="acknowledgement">I acknowledge that I work and live on unceded Gadigal Land. I would like to acknowledge and celebrate the monumental impacts of First Nations psychological thought leaders including (but not limited to) <a href="https://indigenouspsychservices.com.au/downloads/" target="_blank" rel="noopener">Dr Tracy Westman</a>'s <em>Culture-bound syndromes in Aboriginal Australian populations</em> (2021), and <a href="https://research-repository.uwa.edu.au/en/persons/patricia-dudgeon/" target="_blank" rel="noopener">Professor Pat Dudgeon</a> et al.'s <a href="https://www.niaa.gov.au/sites/default/files/documents/publications/solutions-that-work-suicide-prevention.pdf" target="_blank" rel="noopener"><em>Solutions That Work: What the Evidence and Our People Tell Us</em> (2016)</a>.</p>
 </body>
