@@ -116,7 +116,7 @@ a { color: inherit; text-decoration: none; }
 .index-row-desc { font-size: 12px; color: var(--muted); margin-top: 4px; }
 .index-row-cat { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--subtle); text-align: right; padding-top: 2px; }
 
-.acknowledgement { font-size: 11px; color: var(--subtle); line-height: 1.7; max-width: 640px; margin-top: 48px; padding: 0 64px; }
+.acknowledgement { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; font-size: 10px; color: var(--subtle); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 10px 64px; }
 .acknowledgement a { color: var(--subtle); }
 .acknowledgement a:hover { color: #B84040; font-style: italic; }
 
@@ -186,7 +186,6 @@ a { color: inherit; text-decoration: none; }
         </div>
       </div>
     </div>
-    <p class="acknowledgement fade-in">I acknowledge that I work and live on unceded Gadigal Land. I would like to acknowledge and celebrate the monumental impacts of First Nations psychological thought leaders including (but not limited to) <a href="https://indigenouspsychservices.com.au/downloads/" target="_blank" rel="noopener">Dr Tracy Westman's <em>Culture-bound syndromes in Aboriginal Australian populations</em> (2021)</a>, and <a href="https://research-repository.uwa.edu.au/en/persons/patricia-dudgeon/" target="_blank" rel="noopener">Professor Pat Dudgeon</a> et al.'s <a href="https://www.niaa.gov.au/sites/default/files/documents/publications/solutions-that-work-suicide-prevention.pdf" target="_blank" rel="noopener"><em>Solutions That Work: What the Evidence and Our People Tell Us</em> (2016)</a>.</p>
   </div>
 
 
@@ -282,5 +281,6 @@ function switchTab(tab) {
 // Auto-open on "Me" tab on load
 switchTab('me');
 </script>
+<p class="acknowledgement">I acknowledge that I work and live on unceded Gadigal Land. I would like to acknowledge and celebrate the monumental impacts of First Nations psychological thought leaders including (but not limited to) <a href="https://indigenouspsychservices.com.au/downloads/" target="_blank" rel="noopener">Dr Tracy Westman</a>'s <em>Culture-bound syndromes in Aboriginal Australian populations</em> (2021), and <a href="https://research-repository.uwa.edu.au/en/persons/patricia-dudgeon/" target="_blank" rel="noopener">Professor Pat Dudgeon</a> et al.'s <a href="https://www.niaa.gov.au/sites/default/files/documents/publications/solutions-that-work-suicide-prevention.pdf" target="_blank" rel="noopener"><em>Solutions That Work: What the Evidence and Our People Tell Us</em> (2016)</a>.</p>
 </body>
 </html>
