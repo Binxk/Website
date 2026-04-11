@@ -147,6 +147,8 @@ a { color: inherit; text-decoration: none; }
 .form-submit:hover { background: #B84040; }
 .form-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 .form-msg { font-size: 12px; margin-top: 12px; color: var(--muted); }
+.form-msg-error { color: #B84040; }
+.form-field-error { font-size: 11px; color: #B84040; display: block; margin-top: 4px; }
 
 .research-header { padding-left: 15%; margin-bottom: 48px; }
 .research-title { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 400; letter-spacing: -0.04em; line-height: 1; white-space: nowrap; }
@@ -337,25 +339,34 @@ a { color: inherit; text-decoration: none; }
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <button class="modal-close" onclick="document.getElementById('contactModal').classList.remove('open')" aria-label="Close">&times;</button>
     <div class="modal-title" id="modalTitle">Send a message</div>
-    <form id="contactForm" action="https://formspree.io/f/xkopdaak" method="POST">
+    <div class="form-msg" data-fs-success>Message sent. Thank you!</div>
+    <div class="form-msg form-msg-error" data-fs-error></div>
+    <form id="contactForm">
       <div class="form-field">
         <label for="cf-name">Name</label>
-        <input type="text" id="cf-name" name="name" required autocomplete="name">
+        <input type="text" id="cf-name" name="name" required autocomplete="name" data-fs-field>
+        <span class="form-field-error" data-fs-error="name"></span>
       </div>
       <div class="form-field">
         <label for="cf-email">Your email</label>
-        <input type="email" id="cf-email" name="email" required autocomplete="email">
+        <input type="email" id="cf-email" name="email" required autocomplete="email" data-fs-field>
+        <span class="form-field-error" data-fs-error="email"></span>
       </div>
       <div class="form-field">
         <label for="cf-msg">Message</label>
-        <textarea id="cf-msg" name="message" required></textarea>
+        <textarea id="cf-msg" name="message" required data-fs-field></textarea>
+        <span class="form-field-error" data-fs-error="message"></span>
       </div>
       <div class="h-captcha" data-sitekey="ca1890e6-adba-4a04-822e-37325756415c"></div>
-      <button type="submit" class="form-submit" id="cfSubmit">Send</button>
-      <div class="form-msg" id="cfMsg"></div>
+      <button type="submit" class="form-submit" data-fs-submit-btn>Send</button>
     </form>
   </div>
 </div>
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#contactForm', formId: 'xkopdaak' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 <script>
 var current = null;
@@ -381,41 +392,6 @@ function switchTab(tab) {
   var ack = document.querySelector('.acknowledgement');
   if (ack) ack.style.display = tab === 'me' ? '' : 'none';
 }
-
-// Contact form
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  var btn = document.getElementById('cfSubmit');
-  var msg = document.getElementById('cfMsg');
-  var captcha = this.querySelector('[name="h-captcha-response"]');
-  if (!captcha || !captcha.value) {
-    msg.textContent = 'Please complete the captcha.';
-    return;
-  }
-  btn.disabled = true;
-  btn.textContent = 'Sending...';
-  msg.textContent = '';
-  fetch(this.action, {
-    method: 'POST',
-    body: new FormData(this),
-    headers: { 'Accept': 'application/json' }
-  }).then(function(r) {
-    if (r.ok) {
-      msg.textContent = 'Message sent. Thank you!';
-      document.getElementById('contactForm').reset();
-      if (window.hcaptcha) hcaptcha.reset();
-      btn.textContent = 'Send';
-      btn.disabled = false;
-    } else {
-      return r.json().then(function(d) { throw new Error(d.error || 'Error'); });
-    }
-  }).catch(function(err) {
-    msg.textContent = 'Something went wrong. Please try again.';
-    btn.textContent = 'Send';
-    btn.disabled = false;
-    if (window.hcaptcha) hcaptcha.reset();
-  });
-});
 
 // Auto-open on "Me" tab on load
 switchTab('me');
