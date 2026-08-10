@@ -2,3 +2,11 @@
 - edited index.html
 - summary: Updated PhD dissertation title to TBA in index.html and pushed changes.
 
+## 2026-07-29 11:24  (session caefff9a)
+- edited index.html
+- summary: Updated death anxiety and healthcare utilisation study entry to published status with 2026 year and new article link.
+
+## 2026-08-10 12:55  (session 13bc0ef0)
+- edited index.html, added nerd.gif
+- summary: Stripped all styling; single page, Times New Roman, centered text, caps section titles with ============= dividers, animated nerd gif tiled around the page border.
+
