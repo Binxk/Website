@@ -10,3 +10,22 @@
 - edited index.html, added nerd.gif
 - summary: Stripped all styling; single page, Times New Roman, centered text, caps section titles with ============= dividers, animated nerd gif tiled around the page border.
 
+## 2026-08-10 12:52  (session 13bc0ef0)
+- wrote index.html
+- downloaded: curl -sL "https://tenor.com/en-AU/view/nerd-emoji-nerdge-gif-438422424867835641…
+- downloaded: curl -sL "https://tenor.com/en-AU/view/nerd-emoji-nerdge-gif-438422424867835641…
+- downloaded: curl -sL -o /Users/bkot7579/Desktop/website/nerd.gif "https://media1.tenor.com/…
+- summary: Stripped site to plain single page with Times New Roman and nerd gif border.
+
+## 2026-08-17 18:49  (session 503e8892)
+- edited index.html
+- summary: Replaced heading with plain-text name and removed paper trail line from website.
+
+## 2026-08-17 18:53  (session 503e8892)
+- edited index.html
+- summary: Removed decorative equals-sign heading and quoted line from site header.
+
+## 2026-10-06 14:05  (session 0dde455b)
+- edited index.html, removed nerd.gif, added favicon.png / favicon-32.png / apple-touch-icon.png
+- summary: Removed the tiled nerd gif border and replaced the off-centre chichi.png favicon with a square, centred, white-background crop so it renders clearly in Google results.
+
